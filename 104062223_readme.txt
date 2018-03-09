@@ -1,0 +1,47 @@
+計算機網路概論 - Lab1 Readme
+----------------------------
+事前步驟：
+  在104062223_cli.c & 104062223_ser.c所在資料夾中，前者創好"upload", "download" folder
+後者創好"upload"，兩者的upload資料夾不可共用。
+----------------------------
+編譯可執行檔.exe：
+  1.利用Dev c++ or Codeblocks等IDE，利用程式內的compiler編譯成.exe
+  2.利用cmd輸入
+
+> gcc -o 104062223_cli 104062223_cli.c -lws2_32
+> gcc -o 104062223_ser 104062223_ser.c -lws2_32
+
+----------------------------
+開啟server端：
+  在server端所在資料夾開啟cmd，輸入
+
+> 104062223_ser 'port number'
+
+  如果出現'Waiting for client...'代表成功
+----------------------------
+開啟client端：
+  在client端所在資料夾開啟cmd，輸入
+
+> 104062223_cli 'IP' 'the same port number'
+
+  如果出現server送來的歡迎資訊'Successfully Connected To FTP Server.'代表成功，同時會提示你
+輸入指令，server端會顯示client端的IP。
+-----------------------------
+允許接收的指令：
+> exit
+  ->  client端終止連線
+
+> dir
+  ->  螢幕會列出位於server端'upload'資料夾內的所有檔案，由右而左顯示'檔名' '檔案大小' '最後修改日期'
+      (ps: 內部與上層的資料夾預設忽略不顯示)
+
+> get 'filename'
+  ->  從server端'upload'資料夾中，下載檔名為'filename'的檔案到client端'download'資料夾
+
+> put 'filename'
+  ->  從client端'upload'資料夾中，上傳檔名為'filename'的檔案到server端'upload'資料夾
+
+> rename 'oldname' 'newname'
+  ->  修改server端'upload'資料夾中，將檔名為'oldname'的檔案更名成'newname'
+
+------------------------------
